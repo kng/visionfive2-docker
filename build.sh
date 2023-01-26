@@ -1,4 +1,3 @@
 #!/bin/bash
-docker build -t knegge/versionfive2:latest .
-
+docker build -t visionfive2:latest .
 
