@@ -1,11 +1,11 @@
-# versionfive2-docker
+# visionfive2-docker
 Docker build environment for VisionFive 2 SBC
 
 ## Building the docker image
 Simply run the build script: `./build.sh`
 
 ## Building firmware and kernel
-All the scripts in mnt are from the Technical Reference Manual<br>
+All the scripts in mnt are from the [Technical Reference Manual](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_SW_TRM.pdf)<br>
 You do not need to install any packages when running the container, it's all included in the build.<br>
 The directory mnt is bind-mounted to the container /mnt<br>
 When you run the scripts, the contents of the git pull and build etc will e in the mnt directory.<br>
