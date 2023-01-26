@@ -19,8 +19,14 @@ When you run the scripts, the contents of the git pull and build etc will e in t
 
 Enter the build environment with a command prompt with: `./shell.sh`
 
-build scripts available: 
-`build_kernel.sh  build_opensbi.sh  build_spl.sh  build_u-boot.sh`
+Build scripts available:<br>
+`build_kernel.sh  build_opensbi.sh  build_spl.sh  build_u-boot.sh`<br>
+These scripts just removes the directory before fetching it from git, so be aware any local changes in those will be wiped.
+
+Quick build of everything:<br>
+`./shell.sh build_all.sh`
+
+or manually for each step, making changes along the way.
 
 u-boot:
 `./shell.sh build_u-boot.sh`
@@ -33,4 +39,8 @@ SPL and payload:
 
 Linux kernel:
 `./shell.sh build_kernel.sh`
+
+## Podman instead of Docker
+
+If you're using podman, simply replace the above `build.sh` with `podman_build.sh` and `shell.sh` with `podman_shell.sh`
 

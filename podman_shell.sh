@@ -1,6 +1,9 @@
 #!/bin/bash
-chmod 777 $(pwd)/mnt
+# if not running privileged
+# either: chmod 777 $(pwd)/mnt
+# or: -v $(pwd)/mnt:/mnt:Z \
 podman run --rm \
-    -v $(pwd)/mnt:/mnt \
-    -it localhost/visionfive2:latest $@
+    -v "$(pwd)"/mnt:/mnt \
+    --privileged \
+    -it localhost/visionfive2:latest "$@"
 
