@@ -2,7 +2,14 @@
 Docker build environment for VisionFive 2 SBC
 
 ## Building the docker image
-Simply run the build script: `./build.sh`
+Clone this repo and enter it, build the image.
+```
+git clone https://github.com/kng/visionfive2-docker.git
+cd visionfive2-docker
+./build.sh
+```
+
+If updating this repo or editing the Dockerfile, rebuild the image again.
 
 ## Building firmware and kernel
 All the scripts in mnt are from the [Technical Reference Manual](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_SW_TRM.pdf)<br>
