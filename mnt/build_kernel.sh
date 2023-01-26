@@ -1,5 +1,5 @@
 #!/bin/bash
-CORES=4
+CORES=`nproc`
 ROOTFS=/mnt/boot
 git clone --depth 1 -b JH7110_VisionFive2_devel https://github.com/starfive-tech/linux.git
 cd linux
