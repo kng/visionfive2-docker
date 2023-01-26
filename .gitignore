@@ -2,4 +2,5 @@ mnt/opensbi
 mnt/Tools
 mnt/u-boot
 mnt/linux
+mnt/boot
 
