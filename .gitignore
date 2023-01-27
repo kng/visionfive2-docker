@@ -3,4 +3,5 @@ mnt/Tools
 mnt/u-boot
 mnt/linux
 mnt/boot
+mnt/lib
 

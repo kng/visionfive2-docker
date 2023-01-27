@@ -1,3 +1,3 @@
 #!/bin/bash
-rm -rf linux opensbi Tools u-boot boot
+rm -rf linux opensbi Tools u-boot boot lib
 
