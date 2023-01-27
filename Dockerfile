@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:jammy
 MAINTAINER sa2kng <knegge@gmail.com>
 
 RUN apt-get -y update &&\
