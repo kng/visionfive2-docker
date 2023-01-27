@@ -12,12 +12,12 @@ cd linux || exit 1
 #git checkout arch/riscv/configs/starfive_visionfive2_defconfig
 patch -p1 < ../kernel_docker.diff
 touch .scmversion
-make starfive_visionfive2_defconfig
+make starfive_visionfive2_defconfig || exit 2
 #make menuconfig
-make olddefconfig
-make -j "${CORES}"
+make olddefconfig || exit 3
+make -j "${CORES}" || exit 4
 mkdir -p ${INSTALL_PATH}
-make zinstall modules_install
+make zinstall modules_install || exit 5
 ls -l arch/riscv/boot/Image.gz
 ls -l arch/riscv/boot/dts/starfive/*.dtb
 ls -l ${INSTALL_PATH}
