@@ -40,6 +40,10 @@ SPL and payload:
 Linux kernel:
 `./shell.sh build_kernel.sh`
 
+Alternatively, linux kernel based on a-wai/vf2-linux, this enables IPv6 and docker:
+`./shell.sh build_kernel_vf2.sh`
+This also builds modules and installs them in mnt/lib/modules.
+
 ## Podman instead of Docker
 
 If you're using podman, simply replace the above `build.sh` with `podman_build.sh` and `shell.sh` with `podman_shell.sh`
