@@ -1,6 +1,5 @@
 #!/bin/bash
-build_u-boot.sh
-build_opensbi.sh
-build_spl.sh
-build_kernel.sh
-
+build_u-boot.sh || exit $?
+build_opensbi.sh || exit $?
+build_spl.sh || exit $?
+build_kernel.sh || exit $?
