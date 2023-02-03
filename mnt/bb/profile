@@ -1,0 +1,19 @@
+# /etc/profile: system-wide .profile file for the Bourne shells
+echo
+# echo -n "Processing /etc/profile... "
+# no-op
+# Set search library path
+# echo "Set search library path in /etc/profile"
+export LD_LIBRARY_PATH=/lib:/usr/lib
+# Set user path
+# echo "Set user path in /etc/profile"
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+export PATH
+# Set PS1
+# Note: In addition to the SHELL variable, ash supports \u, \h, \W, \$, \!, \n, \w, \nnn (octal numbers corresponding to ASCII characters)
+# And \e[xx;xxm (color effects), etc.
+# Also add an extra '\' in front of it!
+# echo "Set PS1 in /etc/profile"
+export PS1="\\e[00;32m[$USER@\\w\\a]\\$\\e[00;34m"
+# echo "Done"
+

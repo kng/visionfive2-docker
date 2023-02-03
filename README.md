@@ -44,6 +44,14 @@ Alternatively, linux kernel based on a-wai/vf2-linux, this enables IPv6 and dock
 `./shell.sh build_kernel_vf2.sh`
 This also builds modules and installs them in mnt/lib/modules.
 
+## Busybox rootfs
+
+Build the rootfs with:
+`./shell.sh build_rootfs.sh`
+
+If you want to test run it, make sure you have the proper qemu installed `docker run --privileged --rm tonistiigi/binfmt:riscv`<br>
+First build the image with `./rootfs_image.sh` and then start a container shell with `./rootfs_shell.sh`
+
 ## Podman instead of Docker
 
 If you're using podman, simply replace the above `build.sh` with `podman_build.sh` and `shell.sh` with `podman_shell.sh`

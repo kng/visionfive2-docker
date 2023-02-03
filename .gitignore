@@ -4,4 +4,6 @@ mnt/u-boot
 mnt/linux
 mnt/boot
 mnt/lib
+mnt/busybox
+mnt/rootfs*
 

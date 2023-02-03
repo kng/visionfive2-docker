@@ -1,0 +1,4 @@
+FROM scratch
+ADD mnt/rootfs.tar.xz /
+CMD "/bin/sh"
+

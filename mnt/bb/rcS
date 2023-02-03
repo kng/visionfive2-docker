@@ -1,0 +1,10 @@
+#! /bin/sh
+#echo "----------mount all"
+/bin/mount -a
+#echo "----------Starting mdev......"
+#/bin/echo /sbin/mdev > /proc/sys/kernel/hotplug
+mdev -s
+echo "********************************************************"
+echo " starfive mini RISC-V Rootfs"
+echo "********************************************************"
+

@@ -7,6 +7,7 @@ RUN apt-get -y update &&\
         bc \
         bison \
         ca-certificates \
+        cpio \
         device-tree-compiler \
         flex \
         gcc \
@@ -15,7 +16,8 @@ RUN apt-get -y update &&\
         kmod \
         libncurses-dev \
         libssl-dev \
-        make &&\
+        make \
+        xz-utils &&\
     rm -rf /var/lib/apt/lists/*
 
 ENV PATH="/mnt:${PATH}"
