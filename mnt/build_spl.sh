@@ -4,7 +4,8 @@ OPENSBI=/mnt/opensbi
 rm -rf Tools
 git clone https://github.com/starfive-tech/Tools.git
 cd Tools/spl_tool || exit 1
-./create_sbl ${UBOOT}/spl/u-boot-spl.bin 0x01010101 ||exit 2
+make || exit 6
+./spl_tool -c -f ${UBOOT}/spl/u-boot-spl.bin || exit 2
 ls -l u-boot-spl.bin.normal.out
 cd ../uboot_its || exit 3
 cp ${OPENSBI}/build/platform/generic/firmware/fw_payload.bin ./ || exit 4

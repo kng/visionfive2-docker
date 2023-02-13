@@ -1,3 +1,3 @@
 #!/bin/bash
-docker build -t visionfive2:latest .
+docker build -t visionfive2:latest . "$@"
 
