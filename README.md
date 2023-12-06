@@ -99,6 +99,7 @@ RUN apt-get -y update &&\
 	apt-get -y install python3-dev &&\
 	apt-get -y install python3-pip &&\
 	apt-get -y install python3-venv &&\ 
+	apt-get -y install sudo &&\
 	rm -rf /var/lib/apt/lists/*
 
 ENV PATH="/mnt:${PATH}"
