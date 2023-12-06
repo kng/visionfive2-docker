@@ -1,8 +1,8 @@
 # visionfive2-docker
 Docker build environment for VisionFive 2 SBC
 
-## Building the docker image
-Clone this repo and enter it, build the image.
+## Building the docker container
+Clone this repo and enter it, build the container.
 ```
 git clone https://github.com/kng/visionfive2-docker.git
 cd visionfive2-docker
@@ -52,7 +52,82 @@ Build the rootfs with:
 If you want to test run it, make sure you have the proper qemu installed `docker run --privileged --rm tonistiigi/binfmt:riscv`<br>
 First build the image with `./rootfs_image.sh` and then start a container shell with `./rootfs_shell.sh`
 
-## Podman instead of Docker
+## All Build Steps With Podman
 
-If you're using podman, simply replace the above `build.sh` with `podman_build.sh` and `shell.sh` with `podman_shell.sh`
+Please note we only use `podman_build.sh` to build the podman container holding ubuntu and the pre-requisite packages.
 
+### 1. Clone this repository
+
+```
+cd ~
+git clone https://github.com/kng/visionfive2-docker.git
+cd ~/visionfive2-docker
+```
+
+### 2. Prepare the Dockerfile for the Podman Ubuntu Container with the Starfive Pre-Requisite Packages
+
+The **Dockerfile** needs a few python3 packages to work otherwise you get build errors.  In this case **python3.8** as the default for this **ubuntu:bionic**.
+
+Here is what I believe the Dockerfile should contain:
+
+```
+cat Dockerfile
+FROM ubuntu:bionic
+MAINTAINER sa2kng <knegge@gmail.com>
+
+RUN apt-get -y update &&\
+    apt -y upgrade &&\
+    apt-get -y install \
+        bc \
+        bison \
+        ca-certificates \
+        cpio \
+        device-tree-compiler \
+        flex \
+        gcc \
+        gcc-riscv64-linux-gnu \
+        git \
+        kmod \
+        libncurses-dev \
+        libssl-dev \
+        make \
+        xz-utils \
+	software-properties-common &&\
+	add-apt-repository ppa:deadsnakes/ppa  &&\
+	apt update &&\
+	apt-get -y install python3.8 &&\
+	apt-get -y install python3-dev &&\
+	apt-get -y install python3-pip &&\
+	apt-get -y install python3-venv &&\ 
+	rm -rf /var/lib/apt/lists/*
+
+ENV PATH="/mnt:${PATH}"
+WORKDIR /mnt
+CMD "bash"
+
+```
+
+### 3. Build The Podman Ubuntu Container With Starfive Pre-Requisite Packages
+
+NOTE: this builds the container image named **localhost/visionfive2:latest**
+
+```
+cd ~/visionfive2-docker
+./podman_build.sh 
+```
+
+### 4. Build the rest with that Podman Ubuntu Container
+
+NOTE: Make sure to run the previous step podman_build.sh step which builds container image named **localhost/visionfive2:latest**.
+The following steps then use podman_shell.sh command to load up that container image named **localhost/visionfive2:latest** and run their respective build scripts.
+
+```
+cd ~/visionfive2-docker
+./podman_shell.sh build_u-boot.sh
+./podman_shell.sh build_opensbi.sh
+./podman_shell.sh build_spl.sh
+./podman_shell.sh build_kernel.sh
+./podman_shell.sh build_rootfs.sh
+```
+
+Voila.  I do hope it works for you.  Cheers.
