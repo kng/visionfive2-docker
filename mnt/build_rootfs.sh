@@ -16,7 +16,7 @@ cd "$BBCONF" && cp inittab profile fstab passwd group shadow "$ROOTFS"/etc && cp
 cd "$ROOTFS" && ln -s bin/busybox init
 cd "$ROOTFS"/dev && fakeroot mknod -m 666 console c 5 1 && fakeroot mknod -m 666 null c 1 3
 #sudo chmod 777 -R *
-cd "$ROOTFS" && find . | cpio -o -H newc | gzip > ../rootfs.cpio.gz
-cd "$ROOTFS" && tar -Jcf ../rootfs.tar.xz .
+cd "$ROOTFS" && fakeroot find . | cpio -o -H newc | gzip > ../rootfs.cpio.gz
+cd "$ROOTFS" && fakeroot tar -Jcf ../rootfs.tar.xz .
 cd /mnt && ls -l rootfs.*
 
