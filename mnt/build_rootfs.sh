@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ensure the mknod, cpio, tar behave correctly by running everything in this script in fakeroot
-# and also ensures cpio.gz and the tar.xz preserve the root:root afterwards
-fakeroot
+# ensure the mknod, cpio, tar behave correctly by invoking this script differently
+# by doing so, it also ensures the cpio.gz and the tar.xz preserve the root:root afterwards
+# ./podman_shell.sh fakeroot /bin/bash build_rootfs.sh
 
 CORES=$(nproc)
 ROOTFS=/mnt/rootfs
