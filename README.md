@@ -128,7 +128,7 @@ cd ~/visionfive2-docker
 ./podman_shell.sh build_opensbi.sh
 ./podman_shell.sh build_spl.sh
 ./podman_shell.sh build_kernel.sh
-./podman_shell.sh build_rootfs.sh
+./podman_shell.sh fakeroot /bin/bash build_rootfs.sh
 ```
 
 Voila.  I do hope it works for you.  Cheers.
