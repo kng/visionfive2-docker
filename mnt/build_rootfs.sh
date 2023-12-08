@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# ensure the mknod, cpio, tar behave correctly by running everything in this script in fakeroot
+# and also ensures cpio.gz and the tar.xz preserve the root:root afterwards
+fakeroot
+
 CORES=$(nproc)
 ROOTFS=/mnt/rootfs
 BBCONF=/mnt/bb
@@ -14,9 +19,8 @@ make oldconfig
 make -j "$CORES" all install
 cd "$BBCONF" && cp inittab profile fstab passwd group shadow "$ROOTFS"/etc && cp rcS "$ROOTFS"/etc/init.d
 cd "$ROOTFS" && ln -s bin/busybox init
-cd "$ROOTFS"/dev && fakeroot mknod -m 666 console c 5 1 && fakeroot mknod -m 666 null c 1 3
+cd "$ROOTFS"/dev && mknod -m 666 console c 5 1 && mknod -m 666 null c 1 3
 #sudo chmod 777 -R *
-cd "$ROOTFS" && fakeroot find . | cpio -o -H newc | gzip > ../rootfs.cpio.gz
-cd "$ROOTFS" && fakeroot tar -Jcf ../rootfs.tar.xz .
+cd "$ROOTFS" && find . | cpio -o -H newc | gzip > ../rootfs.cpio.gz
+cd "$ROOTFS" && tar -Jcf ../rootfs.tar.xz .
 cd /mnt && ls -l rootfs.*
-
