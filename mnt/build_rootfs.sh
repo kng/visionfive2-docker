@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# ensure the mknod, cpio, tar behave correctly by invoking this script differently
+# by doing so, it also ensures the cpio.gz and the tar.xz preserve the root:root afterwards
+# ./podman_shell.sh fakeroot /bin/bash build_rootfs.sh
+
 CORES=$(nproc)
 ROOTFS=/mnt/rootfs
 BBCONF=/mnt/bb
@@ -19,4 +24,3 @@ cd "$ROOTFS"/dev && mknod -m 666 console c 5 1 && mknod -m 666 null c 1 3
 cd "$ROOTFS" && find . | cpio -o -H newc | gzip > ../rootfs.cpio.gz
 cd "$ROOTFS" && tar -Jcf ../rootfs.tar.xz .
 cd /mnt && ls -l rootfs.*
-
