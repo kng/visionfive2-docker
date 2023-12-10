@@ -25,21 +25,21 @@ RUN apt-get -y update &&\
         ccache \
         cmake \
         make \
-        xz-utils \
-       software-properties-common &&\
-       add-apt-repository ppa:deadsnakes/ppa  &&\
-       apt update &&\
-       apt-get -y install python3.8 &&\
-       apt-get -y install python3-dev &&\
-       apt-get -y install python3-pip &&\
-       apt-get -y install python3-venv &&\
-       apt-get -y install sudo &&\
-       add-apt-repository ppa:ubuntu-toolchain-r/test &&\
-       apt update &&\
-       wget https://apt.llvm.org/llvm.sh &&\
-       chmod +x llvm.sh &&\
-       ./llvm.sh all &&\
-       rm -rf /var/lib/apt/lists/*
+        xz-utils &&\
+        software-properties-common &&\
+        add-apt-repository ppa:deadsnakes/ppa  &&\
+        apt update &&\
+        apt-get -y install python3.8 &&\
+        apt-get -y install python3-dev &&\
+        apt-get -y install python3-pip &&\
+        apt-get -y install python3-venv &&\
+        apt-get -y install sudo &&\
+        add-apt-repository ppa:ubuntu-toolchain-r/test &&\
+        apt update &&\
+        wget https://apt.llvm.org/llvm.sh &&\
+        chmod +x llvm.sh &&\
+        ./llvm.sh all &&\
+        rm -rf /var/lib/apt/lists/*
 
 ENV PATH="/mnt:${PATH}"
 ENV CC=clang-17
